@@ -1,7 +1,7 @@
 #include <stdio.h>
-/*
+/**
 * main - Entry point
-*Description: 'print numbers in reverse'
+* Description: 'print numbers in reverse'
 * Return: Always 0 (Success)
 */
 int main(void)
