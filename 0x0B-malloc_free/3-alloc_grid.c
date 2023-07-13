@@ -1,47 +1,46 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * alloc_grid - Returns a pointer to a 2-dimensional array of
- *               integers with each element initalized to 0.
- * @width: The width of the 2-dimensional array.
- * @height: The height of the 2-dimensional array.
- *
- * Return: If width <= 0, height <= 0, or the function fails - NULL.
- *         Otherwise - a pointer to the 2-dimensional array of integers.
+ * alloc_grid - Entry point
+ *@width: rows of matrix
+ *@height: columns of string
+ * Return: a pointer to a 2 dimensional array of integers or null
  */
 int **alloc_grid(int width, int height)
 {
-	int **twoD;
-	int hgt_index, wid_index;
+	int **matrix;
+	int i;
+	int j;
+	int l;
+	int *p;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-
-	twoD = malloc(sizeof(int *) * height);
-
-	if (twoD == NULL)
+	matrix = (int **)malloc(height * sizeof(int *));
+	if (matrix == NULL)
 		return (NULL);
-
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	for (i = 0; i < height; i++)
 	{
-		twoD[hgt_index] = malloc(sizeof(int) * width);
-
-		if (twoD[hgt_index] == NULL)
+		*(matrix + i) = (int *)malloc(width * sizeof(int));
+		if (*(matrix + i) == NULL)
 		{
-			for (; hgt_index >= 0; hgt_index--)
-				free(twoD[hgt_index]);
-
-			free(twoD);
+			for (i = 0; i < height; i++)
+			{
+				p = matrix[i];
+				free(p);
+			}
+			free(matrix);
 			return (NULL);
 		}
 	}
-
-	for (hgt_index = 0; hgt_index < height; hgt_index++)
+	for (l = 0; l < height; l++)
 	{
-		for (wid_index = 0; wid_index < width; wid_index++)
-			twoD[hgt_index][wid_index] = 0;
+		for (j = 0; j < width; j++)
+		{
+			matrix[l][j] = 0;
+		}
 	}
-
-	return (twoD);
+	return (matrix);
 }
