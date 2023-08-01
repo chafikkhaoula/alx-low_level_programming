@@ -1,14 +1,10 @@
 #ifndef LISTS_H
 #define LISTS_H
 
-/*
- * File: lists.h
- * Auth: Brennan D Baraban
- * Desc: Header file containing prototypes and definitions for all functions
- *       and types written in the 0x12-more_singly_linked_lists directory.
- */
-
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 
 /**
  * struct listint_s - singly linked list
@@ -24,20 +20,26 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+int _putchar(char c);
+/*prototype _putchar*/
 size_t print_listint(const listint_t *h);
+/*prototype function that prints all the elements of a listint_t list.*/
 size_t listint_len(const listint_t *h);
 listint_t *add_nodeint(listint_t **head, const int n);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
+/*prototype function that frees a listint_t list.*/
 void free_listint2(listint_t **head);
+/*prototype function that frees a listint_t list.*/
 int pop_listint(listint_t **head);
+/*prototype function that deletes the head node of a listint_t linked list*/
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index);
+/*prototype function that returns the nth node of a listint_t linked list.*/
 int sum_listint(listint_t *head);
+/*prototype function that returns the sum of all the data (n) of a listint_t.*/
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n);
+/*prototype function that inserts a new node at a given position.*/
 int delete_nodeint_at_index(listint_t **head, unsigned int index);
-listint_t *reverse_listint(listint_t **head);
-size_t print_listint_safe(const listint_t *head);
-size_t free_listint_safe(listint_t **h);
-listint_t *find_listint_loop(listint_t *head);
+/*prototy pefunction that deletes the node at index index of a listint_t.*/
 
 #endif /* LISTS_H */
